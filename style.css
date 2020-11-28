@@ -1,0 +1,17 @@
+.good {
+    background-color: green;
+}
+
+.moderate {
+    background-color: orange;
+}
+
+.bad {
+    background-color: red;
+}
+
+body {
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
