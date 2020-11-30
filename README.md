@@ -12,7 +12,7 @@ SO THAT I can plan a trip accordingly
 
 [Project link](https://baileymclem.github.io/weather-dashboard/)
 
-![Image of  ](https://github.com/baileymclem/daily-schedule-app/blob/main/assets/scheduler.gif)
+![Image of  ](https://github.com/baileymclem/https://github.com/baileymclem/weather-dashboard/blob/main/Weather%20Dashboard.gif)
 
 
 
