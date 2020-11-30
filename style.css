@@ -1,17 +1,78 @@
 .good {
-    background-color: green;
+  background-color: green;
+  color: white;
 }
 
 .moderate {
-    background-color: orange;
+  background-color: orange;
+  color: white;
 }
 
 .bad {
-    background-color: red;
+  background-color: red;
+  color: white;
+}
+
+span {
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.navbar {
+  background-color: dimgray;
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
+  justify-content: center;
+  padding: 0px;
+}
+
+.footer {
+  background-color: white;
+}
+
+.container {
+  border-width: 1px;
+  border-color: rgb(240, 231, 231);
+  border-style: solid;
+  margin-top: 20px;
+}
+
+.col-sm {
+  background-color: royalblue;
+  margin: 10px;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#date {
+  font-size: larger;
+  font-weight: bold;
+}
+
+#cityNameText {
+    margin-bottom: 20px;
+}
+
+.btn {
+    margin-bottom: 20px;
+}
+
+#search-city {
+    font-size: 25px;
+    font-weight: bold;
 }
 
 body {
-    background-color: whitesmoke;
+    color: rgb(73, 73, 73);
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.list-group {
+    cursor: pointer;
+}
+
+.card {
+    margin-right: 10px;
+}

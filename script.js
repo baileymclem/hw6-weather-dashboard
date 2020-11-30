@@ -27,13 +27,13 @@ $(document).ready(function () {
   //create a list element in the DOM to display the cities searched (cityList) for the user's search history
   var ul = $(".list-group");
 
-  console.log("city list", cityList.slice(-5));
-  cityList.slice(-5).some((item, index) => {
+
+  cityList.slice(-8).some((item, index) => {
     var li = $("<li>");
     li.text(item).addClass("list-group-item");
     ul.append(li);
 
-    if (index === 5) {
+    if (index === 8) {
       return true;
     }
   });
@@ -43,7 +43,7 @@ $(document).ready(function () {
     var queryURL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       cityName +
-      "&appid=" +
+      "&units=imperial&appid=" +
       apiKey;
     $.ajax({
       url: queryURL,
@@ -58,22 +58,23 @@ $(document).ready(function () {
       weatherForecaseEL.empty();
       var nameEl = $("<h1>");
       nameEl.text(name);
+      var currentDate = moment().format("MMM Do YYYY");
 
       var icon = $(
         `<img src=" http://openweathermap.org/img/wn/${response.weather[0].icon}.png">`
       );
 
-      var tempEl = $("<p>");
+      var tempEl = $("<div>");
       tempEl.text(`Temp: ` + temp);
 
-      var humidityEl = $("<p>");
+      var humidityEl = $("<div>");
       humidityEl.text("Humidity: " + humidity);
 
-      var windSpeedEl = $("<p>");
+      var windSpeedEl = $("<div>");
       windSpeedEl.text("Wind Speed: " + windSpeed);
 
       //UV Index conditions
-      var uvIndexEl = $("<p>").text("Uv: ");
+      var uvIndexEl = $("<div>").text("Uv: ");
       var uvIndexSpanEl = $("<span>");
       uvIndexSpanEl.text(uvIndex);
       if (uvIndex < 3) {
@@ -85,8 +86,9 @@ $(document).ready(function () {
       }
       uvIndexEl.append(uvIndexSpanEl);
 
-      weatherForecaseEL.append(icon);
       weatherForecaseEL.append(nameEl);
+      weatherForecaseEL.append(currentDate);
+      weatherForecaseEL.append(icon);
       weatherForecaseEL.append(tempEl);
       weatherForecaseEL.append(humidityEl);
       weatherForecaseEL.append(windSpeedEl);
@@ -98,7 +100,12 @@ $(document).ready(function () {
   $(ul).on("click", "li", function () {
     let cityName = $(this).text();
 
+
+    setCityList(cityName);
+
     apiCall(cityName);
+
+    apiCallTwo(cityName);
   });
 
   //second api call for five day forecast
@@ -106,7 +113,7 @@ $(document).ready(function () {
     var queryURLTwo =
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
       cityName +
-      "&appid=" +
+      "&units=imperial&appid=" +
       apiKey;
 
     $.ajax({
@@ -119,24 +126,24 @@ $(document).ready(function () {
         return days.dt_txt.includes("12:00:00");
       });
 
+      $("#fiveDayForecast").empty();
+
       //Five day forecast
-      var fiveDayForecastEL = $("#fiveDayForecast");
-      var fiveDayRowEl = $(".row");
+      var fiveDayRowEl = $("#fiveDayForecast");
       forecastData.map((data) => {
+        console.log("data", data);
         var divContainerEl = $('<div class="col-sm">');
+
+        var pdateEl = $("<p id='date'>").text(data.dt_txt.split(" ")[0]);
         var pEl = $("<p>").text(`Humidity: ${data.main.humidity}`);
         var ptempEl = $("<p>").text(`Temp: ${data.main.temp}`);
 
-        console.log(data.dt_txt.split(" ")[0]);
-
-        var pdateEl = $("<p>").text(data.dt_txt.split(" ")[0]);
         var icon = $(
           `<img src=" http://openweathermap.org/img/wn/${data.weather[0].icon}.png">`
         );
 
-        divContainerEl.append(pEl, ptempEl, pdateEl, icon);
+        divContainerEl.append(pdateEl, icon, ptempEl, pEl);
         fiveDayRowEl.append(divContainerEl);
-        fiveDayForecastEL.append(fiveDayRowEl);;
       });
     });
   }
