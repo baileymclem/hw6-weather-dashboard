@@ -10,7 +10,7 @@ I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 ```
 
-[Project link](https://baileymclem.github.io/daily-schedule-app/)
+[Project link](https://baileymclem.github.io/weather-dashboard/)
 
 ![Image of  ](https://github.com/baileymclem/daily-schedule-app/blob/main/assets/scheduler.gif)
 
