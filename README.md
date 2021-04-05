@@ -1,6 +1,6 @@
 # Weather Dashboard
 
- Using a third-party app, I created a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+ Using a third-party API, I created a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
 ## User Story
 
